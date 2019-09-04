@@ -1,0 +1,28 @@
+{
+    "questions": [
+        {
+            "text": "How would you answer for a question A?",
+            "answers": [
+                "Answer A",
+                "Answer B",
+                "Answer C"
+            ]
+        },
+        {
+            "text": "How would you answer for a question B?",
+            "answers": [
+                "Answer D",
+                "Answer E",
+                "Answer F"
+            ]
+        },
+        {
+            "text": "How would you answer for a question C?",
+            "answers": [
+                "Answer G",
+                "Answer H",
+                "Answer I"
+            ]
+        }
+    ]
+}

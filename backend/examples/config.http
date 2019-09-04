@@ -1,0 +1,24 @@
+:host = 34.77.155.8.xip.io
+:proto = https
+
+###
+
+GET :proto://backend.:host/update
+
+###
+
+POST :proto://backend.:host/stands
+Content-Type: application/json
+< stands.json
+
+###
+
+POST :proto://backend.:host/attributes
+Content-Type: application/json
+< attributes.json
+
+###
+
+POST :proto://backend.:host/questions
+Content-Type: application/json
+< questions.json
