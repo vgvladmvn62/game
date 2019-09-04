@@ -18,6 +18,6 @@ RUN npm run build --production
 
 FROM nginx:latest
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /app/build var/public
+COPY --from=builder /app/build /html
 EXPOSE ${PORT}
 CMD ["nginx", "-g", "daemon off;"]
