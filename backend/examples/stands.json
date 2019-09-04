@@ -1,0 +1,19 @@
+{
+    "stands": [
+        {
+            "ID": "0",
+            "productID": "23355",
+            "active": true
+        },
+        {
+            "ID": "1",
+            "productID": "29925",
+            "active": true
+        },
+        {
+            "ID": "2",
+            "productID": "107701",
+            "active": true
+        }
+    ]
+}
