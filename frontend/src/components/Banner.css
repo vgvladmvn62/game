@@ -1,0 +1,24 @@
+.banner {
+    position: absolute;
+    z-index: -1;
+    top: 102%;
+    left: 36%;
+    transform: rotate(20deg) translate(-50%,-50%);
+    filter: grayscale(100%);
+}
+
+img .blured {
+    opacity: 0.5;
+    filter: blur(5px) grayscale(100%);
+}
+
+.bannerCrop {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hidden{
+    display: none;
+}

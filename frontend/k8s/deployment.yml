@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "bullseye-ui"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "bullseye-ui"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+
+      labels:
+        app: "bullseye-ui"
+    spec:
+
+      imagePullSecrets:
+      - name: regcred
+
+      volumes:
+        - name: bulls-ui
+          configMap:
+            name: bulls-ui
+
+      containers:
+      - name: bullseye
+        image: "empty""
+        imagePullPolicy: Always
+
+        volumeMounts:
+          - name: bulls-ui
+            mountPath: "/var/public/config/"
+
+        ports:
+        - containerPort: 80
