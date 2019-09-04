@@ -34,7 +34,7 @@ spec:
 
         volumeMounts:
           - name: bulls-ui
-            mountPath: "/usr/share/nginx/html/config"
+            mountPath: "/html/config"
 
         ports:
         - containerPort: 80
