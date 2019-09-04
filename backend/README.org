@@ -1,0 +1,52 @@
+* Bullseye
+
+** Overview
+
+   Bullseye is a smart shelf system that suggests products depending on preferences.
+   Customer fills in a questionnaire consisting of single choice questions and
+   submits their choices. Then application lights up shelf with the best matching
+   product based on given answers to visually indicate which products to pick up
+   and presents overall result on the screen.
+
+   Bullseye consists of two parts:
+   - backend (server)
+   - frontend (client)
+   - Raspberry PI client (for controlling shelves)
+   - hardware (used on each shelf individually)
+   - set of shelves with lights connected to Raspberry Pi
+     
+   Bullseye communicates with RPI using MQTT protocol which is not included in this project.
+
+** Prerequisites
+   - Kyma cluster for deployment
+   - MQTT server for communication with hardware
+   - Raspberry PI with ~bullseye-rpi~ client deployed
+   - Shelves with ~slab.ino~ flashed, connected to RPI physically
+   - SAP Commerce Cloud instance with Omni Commerce Connect extension
+
+** Installation
+   Refer to [[./docs/installation.org][this]] document.
+   
+** Configuration
+   Refer to [[./docs/configuration.org][this]] document.
+
+** Usage
+
+   [[./docs/assets/diagram_bullseye.svg]]
+
+   Usage of the project is pretty straightforward. Frontend side of application presents
+   questionnaire which consists of single choice questions. After answering all of them
+   and submitting choices the user is being presented list of available products
+   sorted by matching score descending. The best matching product is on a top.
+   A shelf with the product is light up to indicate what should be picked by user.
+
+   Backend side is for an administrator to adjust questions, answers, products and
+   mappings between them. For more details refer to [[./docs/configuration.org][this]] document.
+
+** Development
+
+   1. Close this repository
+   2. Create a new branch on base of `develop`.
+   3. Make appropriate changes.
+   4. Open pull request repository and include all details in description in terms
+   of what has been changed and what was the reason behind changes.

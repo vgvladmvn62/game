@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "bullseye-backend"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "bullseye-backend"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app: "bullseye-backend"
+    spec:
+      imagePullSecrets:
+        - name: regcred
+
+      containers:
+      - name: bullseye
+        image: empty
+        imagePullPolicy: Always
+        env:
+        - name: DB_HOST
+          value: postgres-postgresql
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_NAME
+          value: postgres
+        - name: DB_USER
+          value: postgres
+        - name: DB_PASSWORD
+          value: password
+        - name: EC_HOST_API
+          value: https://localhost:9002/rest/v2
+        - name: EC_HOST_STATIC
+          value: https://localhost:9002
+        - name: EC_HTTP_CLIENT_TIMEOUT_SECONDS
+          value: "20"
+        - name: HW_MQTT_BROKER
+          value: tcp://test.mosquitto.org:1883
+
+        ports:
+        - containerPort: 8080

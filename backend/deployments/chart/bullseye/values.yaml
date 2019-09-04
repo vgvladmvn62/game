@@ -1,0 +1,19 @@
+ec:
+  url: "https://localhost:9002"
+  site: "electronics"
+
+mqttServer: "tcp://test.mosquitto.org:1883"
+
+kymaClusterHostname: kyma.local
+
+backend:
+  subdomain: "backend"
+  image: "empty"
+
+frontend:
+  subdomain: "bullseye"
+  image: "empty"
+
+postgres:
+  postgresqlUsername: postgres
+  postgresqlPassword: password

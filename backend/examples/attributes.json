@@ -1,0 +1,28 @@
+{
+    "mapping": [
+        {
+            "id": "23355",
+            "attributes": [
+                "Answer A",
+                "Answer B",
+                "Answer C"
+            ]
+        },
+        {
+            "id": "29925",
+            "attributes": [
+                "Answer D",
+                "Answer E",
+                "Answer F"
+            ]
+        },
+        {
+            "id": "107701",
+            "attributes": [
+                "Answer G",
+                "Answer H",
+                "Answer I"
+            ]
+        }
+    ]
+}
