@@ -1,0 +1,62 @@
+.questionnaireRoot {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 20px 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .questionnaireRoot {
+        min-width: 400px;
+    }
+}
+
+.questionnaireFooter {
+    display: flex;
+    flex-direction: column;
+}
+
+.questionnaireNavigation {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.questionnaireAccept {
+    width: 100%;
+}
+
+.questionnaireNavBtn {
+    width: 100%;
+}
+
+.App {
+    margin: 50px auto;
+    width: 90%;
+}
+
+@media only screen and (min-width: 480px) {
+    .App {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .App {
+        width: 55%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .App {
+        max-width: 500px;
+    }
+}
+
+div.productImage {
+    width: 90%;
+}
+
+@media only screen and (min-width: 480px) {
+    div.productImage {
+        width: inherit;
+    }
+}

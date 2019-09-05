@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-frontend
+  name: "bullseye-ui"
 spec:
   replicas: 1
   selector:
@@ -19,22 +19,23 @@ spec:
       labels:
         app: "bullseye-ui"
     spec:
+
+      imagePullSecrets:
+      - name: regcred
+
       volumes:
         - name: bulls-ui
           configMap:
-            name:  {{ .Release.Name }}-ui-config
-            items:
-              - key: config.js
-                path: config.js
+            name: bulls-ui
 
       containers:
       - name: bullseye
-        image: {{ .Values.frontend.image }}
+        image: "empty""
         imagePullPolicy: Always
 
         volumeMounts:
           - name: bulls-ui
-            mountPath: "/html/config"
+            mountPath: "/var/public/config/"
 
         ports:
         - containerPort: 80
