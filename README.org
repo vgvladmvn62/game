@@ -19,8 +19,8 @@
 ** Prerequisites
    - Kyma cluster for deployment
    - MQTT server for communication with hardware
-   - Raspberry PI with `raspberry` client deployed
-   - Shelves with `hardware` code installed and physically connected to RPI
+   - Raspberry PI with *raspberry* client deployed
+   - Shelves with *hardware* code installed and physically connected to RPI
    - SAP Commerce Cloud instance with Omni Commerce Connect extension
 
 ** Installation
@@ -32,22 +32,22 @@
 ** Usage
    [[./docs/assets/diagram_bullseye.svg]]
 
-   `frontend` part of application presents questionnaire which consists of single choice questions.
+   *frontend* part of application presents questionnaire which consists of single choice questions.
    After submitting answers a list of available products, sorted descending by matching score
    is being presented to a user. The best matching product is exposed on a top of a site.
    A shelf with the chosen product is being light up to indicate what should be picked by the user.
    For more details refer to [[.frontend/README.md][this]] document.
 
-   `backend` part is for an administrator to adjust questions, answers, products and
+   *backend* part is for an administrator to adjust questions, answers, products and
    mappings between them. For more details refer to [[.backend/docs/configuration.org][this]] document.
 
-   `raspberry` part introduces client for Raspberry PI which enables communication through MQTT broker.
+   *raspberry* part introduces client for Raspberry PI which enables communication through MQTT broker.
    It controls shelves connected to RPI using `hardware` part. For more details refer to
    [[.raspberry/README.md][raspberry]] and [[.hardware/README.md][hardware]] docs.
 
 ** Development
    1. Close this repository.
-   2. Create a new branch on base of `develop`.
+   2. Create a new branch on base of *develop*.
    3. Make appropriate changes.
    4. Open pull request and include all details in description in terms of what has been changed
       and what was the reason behind changes.
