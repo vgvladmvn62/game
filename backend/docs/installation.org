@@ -63,17 +63,17 @@ After installation, Bullseye has to be [[./configuration.org][configured]].
 
 *** values
     All URLs must not have trailing slashes.
-    | Parameter                     | Default                         | Description                                     |
-    |-------------------------------+---------------------------------| ------------------------------------------------+
-    | ~ec.url~                      | ~https://localhost:9002~        | URL to EC instance                              |
-    | ~ec.site~                     | ~electronics~                   | base site for accessing web resources from EC   |
-    | ~mqttServer~                  | ~tcp://test.mosquitto.org:1883~ | url of mqtt server (must match RPI)             |
-    | ~kymaClusterHostname~         | ~kyma.local~                    | url of your cluster (mainly for exposing API)   |
-    | ~backend.subdomain~           | ~backend~                       | name of backend subdomain (used to expose API)  |
-    | ~backend.image~               | ~void404/bullseye:latest~       | image of backend application                    |
-    | ~frontend.subdomain~          | ~bullseye~                      | name of frontend subdomain (used to expose API) |
-    | ~frontend.image~              | ~void404/bullseye-ui:latest~    | image of frontend application                   |
-    | ~postgres.postgresqlUsername~ | ~postgres~                      | PostgreSQL database username                    |
-    | ~postgres.postgresqlPassword~ | ~password~                      | PostgreSQL database password                    |
+    | Parameter                     | Default                         | Description                                      |
+    |-------------------------------+---------------------------------+--------------------------------------------------|
+    | ~ec.url~                      | ~https://localhost:9002~        | URL to EC instance.                              |
+    | ~ec.site~                     | ~electronics~                   | Base site for accessing web resources from EC.   |
+    | ~mqttServer~                  | ~tcp://test.mosquitto.org:1883~ | URL of MQTT server (must match RPI).             |
+    | ~kymaClusterHostname~         | ~kyma.local~                    | URL of your cluster (mainly for exposing API).   |
+    | ~backend.subdomain~           | ~backend~                       | Name of backend subdomain (used to expose API).  |
+    | ~backend.image~               | ~none~                          | Image of backend application.                    |
+    | ~frontend.subdomain~          | ~bullseye~                      | Name of frontend subdomain (used to expose API). |
+    | ~frontend.image~              | ~none                           | Image of frontend application.                   |
+    | ~postgres.postgresqlUsername~ | ~postgres~                      | PostgreSQL database username.                    |
+    | ~postgres.postgresqlPassword~ | ~password~                      | PostgreSQL database password.                    |
 
     
