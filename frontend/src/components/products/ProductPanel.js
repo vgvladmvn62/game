@@ -31,7 +31,7 @@ class ProductPanel extends Component {
 
                             <div className="productDescription" dangerouslySetInnerHTML={{__html: product.description}} />
                             <div className="productTags">
-                                { productData.attributes.map((attr, index)=><span key={index} className={"icon-" + attr.found}>{attr.attribute}</span>) }
+                                { productData.attributes.map((attr, index)=><span key={index} className={"icon-" + attr.found}></span>) }
                             </div>
                         </div>
                     </div>
