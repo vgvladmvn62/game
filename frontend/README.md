@@ -36,16 +36,10 @@ Make sure that you are in factory-dockerysf-deploy group, which has deploy permi
 
 Then login into repository:
 ```shell
-docker login repository.hybris.com:5011 
+docker login 
 ```
 
-There is already bullseye Docker image in artifactory, but if you make some changes you can build and push new image by running:
-
-```shell
-./build.sh
-```
-
-**Warning:** It will be tagged as bullseye-ui:latest and will override previous image. Use with caution.
+If you make some changes you should build and push new image to repository.
 
 ### Deployment on Kubernetes cluster
 
