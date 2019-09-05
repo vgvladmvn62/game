@@ -43,7 +43,7 @@ func (i *imagesSlice) UnmarshalJSON(data []byte) error {
 func (i *imagesSlice) getFirstPrimaryImageURL() string {
 	if len(i.Images) > 0 {
 		for idx := range i.Images {
-			if i.Images[idx].ImageType == "PRIMARY" {
+			if i.Images[idx].ImageType == "PRIMARY" || i.Images[idx].ImageType == "GALLERY" {
 				return i.Images[idx].URL
 			}
 		}
