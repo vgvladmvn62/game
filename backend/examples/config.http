@@ -1,24 +1,25 @@
-:host = 34.77.155.8.xip.io
+:subdomain = bullseye
+:host = localhost:8080
 :proto = https
 
 ###
 
-GET :proto://backend.:host/update
+GET :proto://:subdomain.:host/update
 
 ###
 
-POST :proto://backend.:host/stands
+POST :proto://:subdomain.:host/stands
 Content-Type: application/json
 < stands.json
 
 ###
 
-POST :proto://backend.:host/attributes
+POST :proto://:subdomain.:host/attributes
 Content-Type: application/json
 < attributes.json
 
 ###
 
-POST :proto://backend.:host/questions
+POST :proto://:subdomain.:host/questions
 Content-Type: application/json
 < questions.json

@@ -1,4 +1,4 @@
-nclude <Adafruit_NeoPixel.h>
+#include <Adafruit_NeoPixel.h>
 
 #define LED_PIN 17
 #define SENSOR_PIN A0
