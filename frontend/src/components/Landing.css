@@ -1,0 +1,53 @@
+.landingBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.landingPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    padding: 10px 10px 10px 10px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .landingPanel {
+        width: 50%;
+    }
+}
+
+button {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.bner {
+    height: stretch;
+    background-image: url("/bullseye.jpg");
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-position: center;
+    z-index: -1;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}

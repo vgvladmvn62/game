@@ -1,0 +1,2 @@
+Bullseye will soon be exposed on https://{{ .Values.frontend.subdomain }}.{{ .Values.kymaClusterHostname }}
+You can also access backend on https://{{ .Values.backend.subdomain }}.{{ .Values.kymaClusterHostname }}

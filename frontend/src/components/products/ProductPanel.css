@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "SAP-icons";
+    src: url("/SAP-icons.ttf")
+}
+
+.productTitle {
+    font-size: 18pt;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.productPrice {
+    font-size: 16pt;
+}
+
+.responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.productName {
+    text-align: center;
+}
+
+.productContent {
+    width: 100%;
+}
+
+.productImage {
+    background-size: contain;
+    min-height: 400px;
+}
+
+.productTile {
+}
+
+.productPrice{
+    text-align: center;
+}
+
+.match{
+    text-align: center;
+    justify-content: center;
+    font-size: 13pt;
+    margin-bottom: 5px;
+}
+
+.productTags {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon-true::before {
+    color: green;
+    font-family: "SAP-icons";
+    content: "\e0d0";
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.icon-false::before {
+    color: red;
+    font-family: "SAP-icons";
+    content: "\e254";
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.description {
+    font-size: 11pt;
+}
+@media only screen and (min-width: 768px) {
+    .description {
+        font-size: inherit;
+    }
+}

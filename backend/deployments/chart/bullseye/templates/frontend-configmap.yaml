@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  config.js: |-
+    window.configuration = {
+        backendURL: 'https://{{ .Values.backend.subdomain }}.{{ .Values.kymaClusterHostname }}'
+    };
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-ui-config

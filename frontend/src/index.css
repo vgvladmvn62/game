@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#main-container {
+  width: 100%;
+}
+
+.reset-button-container {
+  padding: 0 40px 15px;
+}

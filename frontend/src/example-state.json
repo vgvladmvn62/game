@@ -1,0 +1,31 @@
+{
+    "banner": {
+	"blured": false,
+	"visible": true
+    },
+    "questionnaire": {
+        "step": 0,
+        "loaded": false,
+        "questions": [],
+        "answers": [],
+        "filled": false
+    },
+
+    "products": {
+        "loaded": false,
+        "highlightedProduct": 0,
+        "matched": [
+            {
+                "score": 60,
+                "attributes": ["a", "b", "c"],
+                "product": {
+                    "id": "1234",
+                    "description": "with <b>tags!</b>",
+                    "price": {},
+                    "name": "Amazing product!",
+                    "images": {}
+                }
+            }
+        ]
+    }
+}

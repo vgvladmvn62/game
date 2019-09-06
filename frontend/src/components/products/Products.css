@@ -1,0 +1,16 @@
+.back {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 90%;
+    align-self: center;
+}
+
+.productsPanel {
+    display: flex;
+    flex-direction: column;
+}
+
+.loadingProducts {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

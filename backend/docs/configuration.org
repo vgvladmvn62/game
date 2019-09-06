@@ -1,0 +1,109 @@
+* Configuration
+
+  Bullseye is configured by sending JSONs to appropriate endpoints of the backend.
+  Before using Bullseye, you have to assign products to stands, attributes to
+  products and define questions. Answers to questions are equal to attributes they
+  represent. Attributes can contain spaces and special characters.
+
+** Endpoints
+   Configuration can be uploaded with POST request and downloaded with GET.
+
+   -----
+   ~/questions~
+   
+   Define questions and answers displayed to users.
+
+   #+BEGIN_SRC js
+     {
+	 "questions": [
+	     {
+		 "text": "How would you answer for a question A?",
+		 "answers": [
+		     "Answer A",
+		     "Answer B",
+		     "Answer C"
+		 ]
+	     },
+	     {
+		 "text": "How would you answer for a question B?",
+		 "answers": [
+		     "Answer D",
+		     "Answer E",
+		     "Answer F"
+		 ]
+	     },
+	     {
+		 "text": "How would you answer for a question C?",
+		 "answers": [
+		     "Answer G",
+		     "Answer H",
+		     "Answer I"
+		 ]
+	     }
+	 ]
+     }
+   #+END_SRC
+
+   ~/stands~
+
+   ID coresponds to stand number, product ID comes from EC.
+   You can configure products as inactive when they are not available right now but might still
+   be offered in future.
+
+   #+BEGIN_SRC js
+     {
+	 "stands": [
+	     {
+		 "ID": "0",
+		 "productID": "23355",
+		 "active": true
+	     },
+	     {
+		 "ID": "1",
+		 "productID": "29925",
+		 "active": true
+	     },
+	     {
+		 "ID": "2",
+		 "productID": "107701",
+		 "active": true
+	     }
+	 ]
+     }
+   #+END_SRC
+
+   -----
+   ~/attributes~
+
+   Define which answers should count towards which products.
+
+   #+BEGIN_SRC js
+     {
+	 "mapping": [
+	     {
+		 "id": "23355",
+		 "attributes": [
+		     "Answer A",
+		     "Answer B",
+		     "Answer C"
+		 ]
+	     },
+	     {
+		 "id": "29925",
+		 "attributes": [
+		     "Answer D",
+		     "Answer E",
+		     "Answer F"
+		 ]
+	     },
+	     {
+		 "id": "107701",
+		 "attributes": [
+		     "Answer G",
+		     "Answer H",
+		     "Answer I"
+		 ]
+	     }
+	 ]
+     }
+   #+END_SRC

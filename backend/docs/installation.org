@@ -1,0 +1,74 @@
+* Installation
+
+  #+BEGIN_QUOTE
+  *NOTE:* Bullseye's server is not able to start without running database.
+  As a result backend restarts a few times before db is ready.
+  In addition, there is no initial configuration provided on startup.
+  The reason is a potential risk of overriding existing configuration provided by a user.
+  This may cause incorrect tables in database errors in logs.
+  #+END_QUOTE
+
+    
+** Docker
+   1. Configure Enterprise Commerce and MQTT URLs in [[../deployments/docker-compose.yml][docker-compose]]
+   2. ~docker-compose up -f deployments/docker-compose.yml~
+   
+   To dockerize Bullseye run ~make dockerize~. 
+   You only have to do this if you modified code, or if default image ceased to exist.
+
+*** Environmental variables
+    All of those modify only bullseye's server behaviour. 
+    MQTT must match Raspberry Pi configuration.
+    | Name                              | Default                          | Description                                       |
+    |-----------------------------------+----------------------------------+---------------------------------------------------|
+    | *EC_HOST_API*                     | ~https://localhost:9002/rest/v2~ | URL to host which serves EC OCC v2 REST API.      |
+    | *EC_HOST_STATIC*                  | ~https://localhost:9002~         | URL to base EC host.                              |
+    | *EC_PRODUCTS_SITE*                | ~electronics~                    | Name of the products site to access.              |
+    | *EC_HTTP_CLIENT_TIMEOUT_SECONDS*  | ~10~                             | Amount of time to wait before cancelling request. |
+    | *SERVER_PORT*                     | ~8080~                           | The port on which the HTTP server listens.        |
+    | *SERVER_IP*                       | ~0.0.0.0~                        | IP of the server.                                 |
+    | *SERVER_LOGGER_TYPE*              | ~3~                              | Type of used logger.                              |
+    | *DB_HOST*                         | ~localhost~                      | Database host name.                               |
+    | *DB_PORT*                         | ~5432~                           | Database server port.                             |
+    | *DB_USER*                         | ~postgres~                       | User's name.                                      |
+    | *DB_PASSWORD*                     | ~password~                       | User's password.                                  |
+    | *DB_NAME*                         | ~postgres~                       | Database name.                                    |
+    | *DB_DRIVER*                       | ~postgres~                       | Database driver name.                             |
+    | *HW_MQTT_BROKER*                  | ~tcp://test.mosquitto.org:1883~  | Default MQTT server.                              |
+    | *HW_MQTT_KEEPALIVE_SECONDS*       | ~2~                              | Keep-alive time.                                  |
+    | *HW_MQTT_TIMEOUT_SECONDS*         | ~2~                              | Timeout for commands.                             |
+    | *HW_MQTT_DISCONNECT_MILLISECONDS* | ~250~                            | Disconnect time.                                  |
+
+     
+** Kyma
+   In order install Bullseye on cluster use a helm chart located in ~./chart/bullseye/~.
+   Use helm chart's values to configure bullseye. They are listed in a [[#values][section below]].
+   Parameters should be passed to helm the following way:
+   #+BEGIN_SRC shell
+    --set "variable1=value1","variable2=value2",...,"variablen=valuen"
+   #+END_SRC
+    Make sure to pass appropriate values for "release name" and "namespace name" not to override deployed application
+    version in scope of given namespace.
+   #+BEGIN_SRC shell
+     helm dependency update deployments/chart/bullseye --tls
+     helm install deployments/chart/bullseye -n {release name} --namespace {namespace name} --set "kymaClusterHostname={cluster URL}","ec.url={URL to EC instance}","backend.image={name}","frontend.image={name}} --tls
+   #+END_SRC
+
+   The helm chart contains both backend and frontend.
+
+*** values
+    All URLs must not have trailing slashes.
+    | Parameter                     | Default                         | Description                                      |
+    |-------------------------------+---------------------------------+--------------------------------------------------|
+    | ~ec.url~                      | ~https://localhost:9002~        | URL to EC instance.                              |
+    | ~ec.site~                     | ~electronics~                   | Base site for accessing web resources from EC.   |
+    | ~mqttServer~                  | ~tcp://test.mosquitto.org:1883~ | URL of MQTT server (must match RPI).             |
+    | ~kymaClusterHostname~         | ~kyma.local~                    | URL of your cluster (mainly for exposing API).   |
+    | ~backend.subdomain~           | ~backend~                       | Name of backend subdomain (used to expose API).  |
+    | ~backend.image~               | ~none~                          | Image of backend application.                    |
+    | ~frontend.subdomain~          | ~bullseye~                      | Name of frontend subdomain (used to expose API). |
+    | ~frontend.image~              | ~none~                          | Image of frontend application.                   |
+    | ~postgres.postgresqlUsername~ | ~postgres~                      | PostgreSQL database username.                    |
+    | ~postgres.postgresqlPassword~ | ~password~                      | PostgreSQL database password.                    |
+
+    

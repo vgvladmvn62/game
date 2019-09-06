@@ -1,0 +1,25 @@
+:subdomain = bullseye
+:host = localhost:8080
+:proto = https
+
+###
+
+GET :proto://:subdomain.:host/update
+
+###
+
+POST :proto://:subdomain.:host/stands
+Content-Type: application/json
+< stands.json
+
+###
+
+POST :proto://:subdomain.:host/attributes
+Content-Type: application/json
+< attributes.json
+
+###
+
+POST :proto://:subdomain.:host/questions
+Content-Type: application/json
+< questions.json
