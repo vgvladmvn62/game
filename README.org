@@ -36,10 +36,10 @@
    After submitting answers a list of available products, sorted descending by matching score
    is being presented to a user. The best matching product is exposed on a top of a site.
    A shelf with the chosen product is being light up to indicate what should be picked by the user.
-   For more details refer to [[./frontend/README.md][this]] document.
+   For more details refer to [[./frontend/README.md][frontend]] docs.
 
    *backend* part is for an administrator to adjust questions, answers, products and
-   mappings between them. For more details refer to [[./backend/docs/configuration.org][this]] document.
+   mappings between them. For more details refer to [[./backend/docs/configuration.org][backend]] docs.
 
    *raspberry* part introduces client for Raspberry PI which enables communication through MQTT broker.
    It controls shelves connected to RPI using `hardware` part. For more details refer to

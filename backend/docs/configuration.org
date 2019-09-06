@@ -1,7 +1,7 @@
 * Configuration
 
-  Bullseye is configured by sending JSONs to aproperiate endpoints of the backend.
-  Before using bullseye, you have to assign products to stands, attributes to
+  Bullseye is configured by sending JSONs to appropriate endpoints of the backend.
+  Before using Bullseye, you have to assign products to stands, attributes to
   products and define questions. Answers to questions are equal to attributes they
   represent. Attributes can contain spaces and special characters.
 
@@ -44,11 +44,11 @@
      }
    #+END_SRC
 
-   -----
    ~/stands~
 
    ID coresponds to stand number, product ID comes from EC.
-   You can configure products that you aren't using right now as inactive lest you loose them.
+   You can configure products as inactive when they are not available right now but might still
+   be offered in future.
 
    #+BEGIN_SRC js
      {

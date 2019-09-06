@@ -1,13 +1,8 @@
 * Installation
-  There are two ways to run Bullseye: 
-  - [[#docker][Docker]]
-  - [[#kyma][Kyma]]
-  
-After installation, Bullseye has to be [[./configuration.org][configured]].
 
   #+BEGIN_QUOTE
   *NOTE:* Bullseye's server is not able to start without running database.
-  As a result backend tends to restart around three times.
+  As a result backend restarts a few times before db is ready.
   In addition, there is no initial configuration provided on startup.
   The reason is a potential risk of overriding existing configuration provided by a user.
   This may cause incorrect tables in database errors in logs.
@@ -15,7 +10,7 @@ After installation, Bullseye has to be [[./configuration.org][configured]].
 
     
 ** Docker
-   1. Configure Enterprise Commerce and MQTT urls in [[../deployments/docker-compose.yml][docker-compose]]
+   1. Configure Enterprise Commerce and MQTT URLs in [[../deployments/docker-compose.yml][docker-compose]]
    2. ~docker-compose up -f deployments/docker-compose.yml~
    
    To dockerize Bullseye run ~make dockerize~. 
@@ -23,7 +18,7 @@ After installation, Bullseye has to be [[./configuration.org][configured]].
 
 *** Environmental variables
     All of those modify only bullseye's server behaviour. 
-    MQTT must match RaspberryPi configuration.
+    MQTT must match Raspberry Pi configuration.
     | Name                              | Default                          | Description                                       |
     |-----------------------------------+----------------------------------+---------------------------------------------------|
     | *EC_HOST_API*                     | ~https://localhost:9002/rest/v2~ | URL to host which serves EC OCC v2 REST API.      |
@@ -56,7 +51,7 @@ After installation, Bullseye has to be [[./configuration.org][configured]].
     version in scope of given namespace.
    #+BEGIN_SRC shell
      helm dependency update deployments/chart/bullseye --tls
-     helm install deployments/chart/bullseye -n {release name} --namespace {namespace name} --set "kymaClusterHostname={cluster ip}","ec.url={URL to EC instance}" --tls
+     helm install deployments/chart/bullseye -n {release name} --namespace {namespace name} --set "kymaClusterHostname={cluster URL}","ec.url={URL to EC instance}","backend.image={name}","frontend.image={name}} --tls
    #+END_SRC
 
    The helm chart contains both backend and frontend.
@@ -72,7 +67,7 @@ After installation, Bullseye has to be [[./configuration.org][configured]].
     | ~backend.subdomain~           | ~backend~                       | Name of backend subdomain (used to expose API).  |
     | ~backend.image~               | ~none~                          | Image of backend application.                    |
     | ~frontend.subdomain~          | ~bullseye~                      | Name of frontend subdomain (used to expose API). |
-    | ~frontend.image~              | ~none                           | Image of frontend application.                   |
+    | ~frontend.image~              | ~none~                          | Image of frontend application.                   |
     | ~postgres.postgresqlUsername~ | ~postgres~                      | PostgreSQL database username.                    |
     | ~postgres.postgresqlPassword~ | ~password~                      | PostgreSQL database password.                    |
 
