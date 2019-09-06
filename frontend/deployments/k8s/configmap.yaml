@@ -5,5 +5,5 @@ metadata:
 data:
   config.js: |
     window.configuration = {
-      backendURL: 'https://backend.bullseye.cluster.kyma.cx'
+      backendURL: 'empty'
     };
