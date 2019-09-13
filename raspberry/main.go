@@ -5,8 +5,8 @@ import (
 
 	"github.com/vrischmann/envconfig"
 
-	"github.wdf.sap.corp/team-wojciech/bullseye-rpi/mqtt"
-	"github.wdf.sap.corp/team-wojciech/bullseye-rpi/slab"
+	"github.com/kyma-incubator/bullseye-showcase/raspberry/mqtt"
+	"github.com/kyma-incubator/bullseye-showcase/raspberry/slab"
 )
 
 // Config stores entire application configuration.
