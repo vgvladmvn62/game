@@ -5,15 +5,15 @@ import (
 	"log"
 	"net/http"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/stands"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/stand"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/stands"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/stand"
 
 	"github.com/gorilla/mux"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/ec"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
 
 	"github.com/justinas/alice"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/attributes"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/matching"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/attributes"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/matching"
 )
 
 // Server struct holds connectors and settings

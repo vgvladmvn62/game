@@ -1,8 +1,8 @@
 package hardware
 
 import (
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/stands"
-	"github.wdf.sap.corp/Magikarpie/bullseye/pkg/mqtt"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/stands"
+	"github.com/kyma-incubator/bullseye-showcase/backend/pkg/mqtt"
 )
 
 // Service allows to communicate with hardware via easy API

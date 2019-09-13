@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/matching"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/server"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/matching"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/server"
 )
 
 type hardwarerMock struct {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/stands"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/ec"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/stands"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
 )
 
 // ProductService enables getting information about products.
