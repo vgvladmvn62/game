@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/attributes"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/matching"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/attributes"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/matching"
 )
 
 // AnswersDTO contains answers sent to the server.

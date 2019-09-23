@@ -3,12 +3,12 @@ package matching
 import (
 	"sort"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/stand"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/stand"
 
 	"strconv"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/attributes"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/ec"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/attributes"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
 )
 
 type standService interface {

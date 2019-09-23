@@ -6,12 +6,12 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/server/mocks"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/server/mocks"
 
 	"github.com/go-http-utils/logger"
 	"github.com/stretchr/testify/assert"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/ec"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/server"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/server"
 )
 
 func prepareCorrectConfigForTests() *server.Config {

@@ -1,4 +1,4 @@
-module github.wdf.sap.corp/Magikarpie/bullseye
+module github.com/kyma-incubator/bullseye-showcase/backend
 
 go 1.12
 

@@ -5,9 +5,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/ec"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/productcache"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/productcache/mocks"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/productcache"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/productcache/mocks"
 )
 
 func TestGetProductDetailsByIDFromRepo(t *testing.T) {
