@@ -2,8 +2,8 @@ package questions
 
 import (
 	"github.com/lib/pq"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/server"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/server"
 )
 
 // Repository holds a client of database.

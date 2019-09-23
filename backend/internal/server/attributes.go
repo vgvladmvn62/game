@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/attributes"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/attributes"
 )
 
 // ProductWithAttributesDTO contains information about product's ID and

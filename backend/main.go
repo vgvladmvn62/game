@@ -5,19 +5,19 @@ import (
 	"os"
 
 	"github.com/vrischmann/envconfig"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/products"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/productcache"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/stand"
-	"github.wdf.sap.corp/Magikarpie/bullseye/pkg/mqtt"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/products"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/productcache"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/stand"
+	"github.com/kyma-incubator/bullseye-showcase/backend/pkg/mqtt"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/attributes"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/questions"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/stands"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/ec"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/hardware"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/matching"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/server"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/attributes"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/questions"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/stands"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/hardware"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/matching"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/server"
 )
 
 // Config stores entire application configuration.

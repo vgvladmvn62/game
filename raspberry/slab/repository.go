@@ -8,7 +8,7 @@ import (
 
 	evbus "github.com/asaskevich/EventBus"
 	"github.com/boltdb/bolt"
-	"github.wdf.sap.corp/team-wojciech/bullseye-rpi/mqtt"
+	"github.com/kyma-incubator/bullseye-showcase/raspberry/mqtt"
 )
 
 // Repo stores slabs' data. It allows controlling

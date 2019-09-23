@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"strings"
 
-	database "github.wdf.sap.corp/Magikarpie/bullseye/internal/db"
+	database "github.com/kyma-incubator/bullseye-showcase/backend/internal/db"
 )
 
 // Repository holds an instance of a database.

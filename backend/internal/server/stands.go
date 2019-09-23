@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/stands"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/stands"
 )
 
 // StandsDTO stores list of stands for unmarshaling

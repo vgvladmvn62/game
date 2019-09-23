@@ -3,8 +3,8 @@ package stands
 import (
 	"log"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/ec"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
 )
 
 // StandDTO stores information about stand's ID, product's ID and

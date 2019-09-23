@@ -4,11 +4,11 @@ import (
 	"errors"
 	"testing"
 
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/stand"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/stand"
 
 	"github.com/stretchr/testify/assert"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/db/attributes"
-	"github.wdf.sap.corp/Magikarpie/bullseye/internal/ec"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/attributes"
+	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
 )
 
 type shelfFetcherMock struct {
