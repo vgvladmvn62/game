@@ -35,15 +35,15 @@ type Config struct {
 		Broker string `envconfig:"default=tcp://test.mosquitto.org:1883"`
 
 		KeepAlive struct {
-			Seconds time.Duration `envconfig:"default=2"`
+			Seconds time.Duration `envconfig:"default=2s"`
 		}
 
 		Timeout struct {
-			Seconds time.Duration `envconfig:"default=2"`
+			Seconds time.Duration `envconfig:"default=2s"`
 		}
 
 		Disconnect struct {
-			Milliseconds time.Duration `envconfig:"default=250"`
+			Milliseconds time.Duration `envconfig:"default=250ms"`
 		}
 	}
 }
