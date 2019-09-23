@@ -15,8 +15,13 @@ github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da/go.mod h1:oLH0CmIax
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
+github.com/kyma-incubator/bullseye-showcase v0.0.0-20190923093705-839b67a2df02 h1:YH1iAd90r6PTWs4ENH5o/QqIeNf40+ZYa/ZhQiS5AMw=
+github.com/kyma-incubator/bullseye-showcase v0.0.0-20190923101046-d808d22adac8 h1:gBEQryBh27KtJ5urkv7C7X2M/46a5/jkeGRNGu0jUQk=
+github.com/kyma-incubator/bullseye-showcase v0.0.0-20190923101046-d808d22adac8/go.mod h1:6fSpKMrF33Y5pHA6i6eFknB+Lf5ALmhUQIe6v8i30zM=
 github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-839b67a2df02 h1:tm2GXEREokYYo9S1mav2JJRe9GCqMHo+QXiIAmynTu0=
 github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-839b67a2df02/go.mod h1:Omv/RVvwdXUbD1p24Xvodcqop4UOVkcuWr1UCAeQ9bQ=
+github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-d808d22adac8 h1:dc+cpjgSAn6U4E8ZcqDaS1AV5JOvMNXi+Zn2HlGoXeI=
+github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-d808d22adac8/go.mod h1:Omv/RVvwdXUbD1p24Xvodcqop4UOVkcuWr1UCAeQ9bQ=
 github.com/lib/pq v0.0.0-20180523175426-90697d60dd84/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
@@ -29,6 +34,7 @@ github.com/vrischmann/envconfig v1.2.0/go.mod h1:c5DuUlkzfsnspy1g7qiqryPCsW+Njsr
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297 h1:k7pJ2yAPLPgbskkFdhRCsA77k2fySZ1zf2zCjvQCiIM=
 golang.org/x/net v0.0.0-20190827160401-ba9fcec4b297/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
+golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a h1:1BGLXjeY4akVXGgbC9HugT3Jv3hCI0z56oJR5vAMgBU=
 golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=

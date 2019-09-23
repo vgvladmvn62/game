@@ -35,11 +35,11 @@ type Config struct {
 		Broker string `envconfig:"default=tcp://test.mosquitto.org:1883"`
 
 		KeepAlive struct {
-			Seconds int `envconfig:"default=2"`
+			Seconds time.Duration `envconfig:"default=2"`
 		}
 
 		Timeout struct {
-			Seconds int `envconfig:"default=2"`
+			Seconds time.Duration `envconfig:"default=2"`
 		}
 
 		Disconnect struct {
@@ -50,25 +50,25 @@ type Config struct {
 
 // KeepAlive is a functional option for creating MQTT
 // clients.
-func KeepAlive(t time.Duration) func(*Config) {
+func KeepAlive(sec time.Duration) func(*Config) {
 	return func(conf *Config) {
-		conf.MQTT.KeepAlive.Seconds = int(t / time.Second)
+		conf.MQTT.KeepAlive.Seconds = sec
 	}
 }
 
 // Timeout is a functional option for creating MQTT
 // clients.
-func Timeout(t time.Duration) func(*Config) {
+func Timeout(sec time.Duration) func(*Config) {
 	return func(conf *Config) {
-		conf.MQTT.Timeout.Seconds = int(t / time.Second)
+		conf.MQTT.Timeout.Seconds = sec
 	}
 }
 
 // DisconnectTimeout is a functional option for creating MQTT
 // clients.
-func DisconnectTimeout(t time.Duration) func(*Config) {
+func DisconnectTimeout(sec time.Duration) func(*Config) {
 	return func(conf *Config) {
-		conf.MQTT.Disconnect.Milliseconds = int(t)
+		conf.MQTT.Disconnect.Milliseconds = sec
 	}
 }
 
@@ -116,6 +116,8 @@ func New(broker string, options ...func(*Config)) (*MQTT, error) {
 		opt(conf)
 	}
 
+	conf.MQTT.Broker = broker
+
 	return FromConfig(conf)
 }
 
@@ -128,9 +130,9 @@ func FromConfig(config *Config) (*MQTT, error) {
 	}
 
 	opts := mqtt.NewClientOptions().AddBroker(config.MQTT.Broker)
-	opts.SetKeepAlive(time.Duration(config.MQTT.KeepAlive.Seconds) * time.Second)
+	opts.SetKeepAlive(config.MQTT.KeepAlive.Seconds * time.Second)
 	opts.SetDefaultPublishHandler(defaultHandler(cli.Bus))
-	opts.SetPingTimeout(time.Duration(config.MQTT.Timeout.Seconds) * time.Second)
+	opts.SetPingTimeout(config.MQTT.Timeout.Seconds * time.Second)
 
 	cli.client = mqtt.NewClient(opts)
 

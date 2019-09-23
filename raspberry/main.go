@@ -12,6 +12,7 @@ import (
 // Config stores entire application configuration.
 type Config struct {
 	Slab slab.Config
+	MQTT mqtt.Config
 }
 
 func main() {
@@ -52,7 +53,9 @@ func main() {
 
 	repository.LoadOrAssign()
 
-	cli, err := mqtt.New("tcp://test.mosquitto.org:1883")
+	log.Println("Creating new MQTT client")
+
+	cli, err := mqtt.FromConfig(&config.MQTT)
 	if err != nil {
 		log.Fatalln(err)
 		return
