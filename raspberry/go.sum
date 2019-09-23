@@ -20,8 +20,12 @@ github.com/kyma-incubator/bullseye-showcase v0.0.0-20190923101046-d808d22adac8 h
 github.com/kyma-incubator/bullseye-showcase v0.0.0-20190923101046-d808d22adac8/go.mod h1:6fSpKMrF33Y5pHA6i6eFknB+Lf5ALmhUQIe6v8i30zM=
 github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-839b67a2df02 h1:tm2GXEREokYYo9S1mav2JJRe9GCqMHo+QXiIAmynTu0=
 github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-839b67a2df02/go.mod h1:Omv/RVvwdXUbD1p24Xvodcqop4UOVkcuWr1UCAeQ9bQ=
+github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-b1f0aafc57f1 h1:GbudHUuSG3Lg0rh4DFnfzkdvZ8uuEB0X8YT2gtCWcYQ=
+github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-b1f0aafc57f1/go.mod h1:rgZBek1MjJNWJxpILC1h4S/bjxXcErE2PsdofDZoGOI=
 github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-d808d22adac8 h1:dc+cpjgSAn6U4E8ZcqDaS1AV5JOvMNXi+Zn2HlGoXeI=
 github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-d808d22adac8/go.mod h1:Omv/RVvwdXUbD1p24Xvodcqop4UOVkcuWr1UCAeQ9bQ=
+github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-ff973d7bae14 h1:9c4ZYKdTky1TDu907lpKzfWT1KyvNndz4OyT11Y3SZM=
+github.com/kyma-incubator/bullseye-showcase/backend v0.0.0-20190923093705-ff973d7bae14/go.mod h1:rgZBek1MjJNWJxpILC1h4S/bjxXcErE2PsdofDZoGOI=
 github.com/lib/pq v0.0.0-20180523175426-90697d60dd84/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

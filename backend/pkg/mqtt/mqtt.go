@@ -43,7 +43,7 @@ type Config struct {
 		}
 
 		Disconnect struct {
-			Milliseconds int `envconfig:"default=250"`
+			Milliseconds time.Duration `envconfig:"default=250"`
 		}
 	}
 }
@@ -66,7 +66,7 @@ func Timeout(sec time.Duration) func(*Config) {
 
 // DisconnectTimeout is a functional option for creating MQTT
 // clients.
-func DisconnectTimeout(sec int) func(*Config) {
+func DisconnectTimeout(sec time.Duration) func(*Config) {
 	return func(conf *Config) {
 		conf.MQTT.Disconnect.Milliseconds = sec
 	}
@@ -181,7 +181,7 @@ func (m *MQTT) Publish(cmd Command) error {
 }
 
 // Disconnect from the server.
-func (m *MQTT) Disconnect(milliseconds int) error {
+func (m *MQTT) Disconnect(milliseconds time.Duration) error {
 	m.client.Disconnect(uint(milliseconds))
 	return nil
 }
