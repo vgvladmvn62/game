@@ -8,7 +8,7 @@ import (
 
 	evbus "github.com/asaskevich/EventBus"
 	"github.com/boltdb/bolt"
-	"github.com/kyma-incubator/bullseye-showcase/raspberry/mqtt"
+	"github.com/kyma-incubator/bullseye-showcase/backend/pkg/mqtt"
 )
 
 // Repo stores slabs' data. It allows controlling
@@ -24,14 +24,21 @@ type Repo struct {
 
 // Close closes all managed slabs and database.
 func (r *Repo) Close() error {
-	//TODO: return list of errors?
 	for _, s := range r.slabs {
-		s.Close()
+
+		err := s.Close()
+		if err != nil {
+			return err
+		}
 	}
 
 	if r.db != nil {
-		r.db.Close()
+		err := r.db.Close()
+		if err != nil {
+			return err
+		}
 	}
+
 	return nil
 }
 
@@ -92,7 +99,7 @@ func (r *Repo) OpenDB(path string) error {
 
 	r.db = db
 
-	log.Println("Openned db: ", db)
+	log.Println("Opened db: ", db)
 
 	return nil
 }
@@ -124,7 +131,12 @@ func (r *Repo) Slab(id byte) *Slab {
 // AssignIDs to all slabs.
 func (r *Repo) AssignIDs() {
 	AssignIDs(r, len(r.slabs), r.db)
-	r.OffAll()
+	err := r.OffAll()
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
 	r.LoadIDs()
 }
 
@@ -154,7 +166,7 @@ func (r *Repo) idOf(s *Slab) (int, bool) {
 
 // SignalObject with given color represented as RGB.
 func (r *Repo) SignalObject(color *RGB) {
-	r.Subscribe("slab", func(e Event) {
+	err := r.Subscribe("slab", func(e Event) {
 		id, _ := r.idOf(e.Slab)
 		log.Println("Slab ", id, " hasObject? ", e.Sensor)
 		if e.Sensor {
@@ -163,6 +175,10 @@ func (r *Repo) SignalObject(color *RGB) {
 			_ = e.Slab.Off()
 		}
 	})
+
+	if err != nil {
+		return
+	}
 }
 
 func importCmd(in *mqtt.Command) CommandDTO {
@@ -181,14 +197,25 @@ func importCmd(in *mqtt.Command) CommandDTO {
 // Execute given MQTT command.
 func (r *Repo) Execute(cmdAlien *mqtt.Command) {
 	cmd := importCmd(cmdAlien)
+
 	switch cmd.Command {
 	case mqttOffAll:
 		log.Println("Turning off all")
-		r.OffAll()
+		err := r.OffAll()
+		if err != nil {
+			return
+		}
 	case mqttFade:
 		slab := r.Slab(cmd.ID)
 		log.Println("Fading in: ", slab.ID())
-		slab.SetBrightness(50)
-		slab.On(cmd.RGB)
+		err := slab.SetBrightness(50)
+		if err != nil {
+			return
+		}
+
+		err = slab.On(cmd.RGB)
+		if err != nil {
+			return
+		}
 	}
 }

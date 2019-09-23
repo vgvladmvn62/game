@@ -4,7 +4,7 @@ type publisher interface {
 	Publish(Command) error
 }
 
-// Commander helps in constructing commands for mqtt client.
+// Commander helps in constructing commands for MQTT client.
 type Commander struct {
 	cli publisher
 }

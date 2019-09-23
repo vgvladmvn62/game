@@ -9,6 +9,7 @@ import (
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
 
+// List of commands that can be sent.
 const (
 	// CmdOn represents command for lighting the stands
 	CmdOn byte = iota
@@ -78,14 +79,14 @@ type Command struct {
 	RGB      *RGB
 }
 
-// RGB describes collor with 3 bytes.
+// RGB describes color with 3 bytes.
 // Each color (r, g, b) fits between 0 and 255.
 type RGB struct {
 	R, G, B byte
 }
 
 // MQTT is an abstraction over MQTT client
-// with API specific for bullseye slab control.
+// with API specific for Bullseye slab control.
 type MQTT struct {
 	client mqtt.Client
 	topic  string
@@ -97,7 +98,12 @@ func defaultHandler(bus evbus.Bus) mqtt.MessageHandler {
 		log.Printf("TOPIC: %s\n", msg.Topic())
 		log.Printf("MSG: %s\n", msg.Payload())
 		cmd := new(Command)
-		json.Unmarshal(msg.Payload(), cmd)
+
+		err := json.Unmarshal(msg.Payload(), cmd)
+		if err != nil {
+			log.Fatalln(err)
+			return
+		}
 
 		bus.Publish(topic, cmd)
 	}
@@ -136,7 +142,7 @@ func FromConfig(config *Config) (*MQTT, error) {
 }
 
 // Subscribe mqtt topic. From now on messages sent on this topic
-// will be broadcasted through event bus.
+// will be broadcast through event bus.
 func (m *MQTT) subscribe(topic string) error {
 	if token := m.client.Subscribe(topic, 0, nil); token.Wait() && token.Error() != nil {
 		return token.Error()
@@ -151,6 +157,11 @@ func (m *MQTT) unsubscribe(topic string) error {
 	}
 
 	return nil
+}
+
+// Subscribe on event bus using passed Command.
+func (m *MQTT) Subscribe(fn func(*Command)) error {
+	return m.Bus.Subscribe(topic, fn)
 }
 
 // Publish message to the broker.
