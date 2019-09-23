@@ -66,7 +66,7 @@ func Timeout(sec time.Duration) func(*Config) {
 
 // DisconnectTimeout is a functional option for creating MQTT
 // clients.
-func DisconnectTimeout(sec time.Duration) func(*Config) {
+func DisconnectTimeout(sec int) func(*Config) {
 	return func(conf *Config) {
 		conf.MQTT.Disconnect.Milliseconds = sec
 	}
