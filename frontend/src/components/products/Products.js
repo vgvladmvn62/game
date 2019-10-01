@@ -13,7 +13,7 @@ class Products extends Component {
     }
     loadingOrProducts() {
         if (this.props.loaded) {
-            return this.props.matched.map((_,i)=><ProductPanel key={i} product={i}/>);
+            return this.props.matched.slice(0, 3).map((_, i) => <ProductPanel key={i} product={i} />);
         } else {
             return <Loading />;
         }
@@ -25,14 +25,14 @@ class Products extends Component {
     render() {
         return <div className="App productsPanel fd-panel">
             <div className="reset-button-container">
-            <button
-                onClick={ () => {
-                    turnOffLightsAction()
-                    this.reset()
-                } }
-                className="fd-button--negative back"
-            >
-                Go back
+                <button
+                    onClick={() => {
+                        turnOffLightsAction()
+                        this.reset()
+                    }}
+                    className="fd-button--negative back"
+                >
+                    Go back
             </button>
             </div>
             {this.loadingOrProducts()}
@@ -42,14 +42,14 @@ class Products extends Component {
 
 const mapState = state => {
     return {
-	...state.products
+        ...state.products
     };
 };
 
 const mapDispatch = dispatch => {
     return {
-        banner: ()=> dispatch(banner.hide()),
-        reset: () => {dispatch(reset())}
+        banner: () => dispatch(banner.hide()),
+        reset: () => { dispatch(reset()) }
     };
 };
 
