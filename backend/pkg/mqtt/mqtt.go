@@ -9,6 +9,7 @@ import (
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
 
+// List of commands that can be sent.
 const (
 	// CmdOn represents command for lighting the stands
 	CmdOn byte = iota
@@ -34,40 +35,40 @@ type Config struct {
 		Broker string `envconfig:"default=tcp://test.mosquitto.org:1883"`
 
 		KeepAlive struct {
-			Seconds int `envconfig:"default=2"`
+			Seconds time.Duration `envconfig:"default=2s"`
 		}
 
 		Timeout struct {
-			Seconds int `envconfig:"default=2"`
+			Seconds time.Duration `envconfig:"default=2s"`
 		}
 
 		Disconnect struct {
-			Milliseconds int `envconfig:"default=250"`
+			Milliseconds time.Duration `envconfig:"default=250ms"`
 		}
 	}
 }
 
 // KeepAlive is a functional option for creating MQTT
 // clients.
-func KeepAlive(t time.Duration) func(*Config) {
+func KeepAlive(sec time.Duration) func(*Config) {
 	return func(conf *Config) {
-		conf.MQTT.KeepAlive.Seconds = int(t / time.Second)
+		conf.MQTT.KeepAlive.Seconds = sec
 	}
 }
 
 // Timeout is a functional option for creating MQTT
 // clients.
-func Timeout(t time.Duration) func(*Config) {
+func Timeout(sec time.Duration) func(*Config) {
 	return func(conf *Config) {
-		conf.MQTT.Timeout.Seconds = int(t / time.Second)
+		conf.MQTT.Timeout.Seconds = sec
 	}
 }
 
 // DisconnectTimeout is a functional option for creating MQTT
 // clients.
-func DisconnectTimeout(t time.Duration) func(*Config) {
+func DisconnectTimeout(sec time.Duration) func(*Config) {
 	return func(conf *Config) {
-		conf.MQTT.Disconnect.Milliseconds = int(t)
+		conf.MQTT.Disconnect.Milliseconds = sec
 	}
 }
 
@@ -78,14 +79,14 @@ type Command struct {
 	RGB      *RGB
 }
 
-// RGB describes collor with 3 bytes.
+// RGB describes color with 3 bytes.
 // Each color (r, g, b) fits between 0 and 255.
 type RGB struct {
 	R, G, B byte
 }
 
 // MQTT is an abstraction over MQTT client
-// with API specific for bullseye slab control.
+// with API specific for Bullseye slab control.
 type MQTT struct {
 	client mqtt.Client
 	topic  string
@@ -97,7 +98,12 @@ func defaultHandler(bus evbus.Bus) mqtt.MessageHandler {
 		log.Printf("TOPIC: %s\n", msg.Topic())
 		log.Printf("MSG: %s\n", msg.Payload())
 		cmd := new(Command)
-		json.Unmarshal(msg.Payload(), cmd)
+
+		err := json.Unmarshal(msg.Payload(), cmd)
+		if err != nil {
+			log.Fatalln(err)
+			return
+		}
 
 		bus.Publish(topic, cmd)
 	}
@@ -109,6 +115,8 @@ func New(broker string, options ...func(*Config)) (*MQTT, error) {
 	for _, opt := range options {
 		opt(conf)
 	}
+
+	conf.MQTT.Broker = broker
 
 	return FromConfig(conf)
 }
@@ -122,9 +130,9 @@ func FromConfig(config *Config) (*MQTT, error) {
 	}
 
 	opts := mqtt.NewClientOptions().AddBroker(config.MQTT.Broker)
-	opts.SetKeepAlive(time.Duration(config.MQTT.KeepAlive.Seconds) * time.Second)
+	opts.SetKeepAlive(config.MQTT.KeepAlive.Seconds * time.Second)
 	opts.SetDefaultPublishHandler(defaultHandler(cli.Bus))
-	opts.SetPingTimeout(time.Duration(config.MQTT.Timeout.Seconds) * time.Second)
+	opts.SetPingTimeout(config.MQTT.Timeout.Seconds * time.Second)
 
 	cli.client = mqtt.NewClient(opts)
 
@@ -136,7 +144,7 @@ func FromConfig(config *Config) (*MQTT, error) {
 }
 
 // Subscribe mqtt topic. From now on messages sent on this topic
-// will be broadcasted through event bus.
+// will be broadcast through event bus.
 func (m *MQTT) subscribe(topic string) error {
 	if token := m.client.Subscribe(topic, 0, nil); token.Wait() && token.Error() != nil {
 		return token.Error()
@@ -151,6 +159,11 @@ func (m *MQTT) unsubscribe(topic string) error {
 	}
 
 	return nil
+}
+
+// Subscribe on event bus using passed Command.
+func (m *MQTT) Subscribe(fn func(*Command)) error {
+	return m.Bus.Subscribe(topic, fn)
 }
 
 // Publish message to the broker.
@@ -168,7 +181,7 @@ func (m *MQTT) Publish(cmd Command) error {
 }
 
 // Disconnect from the server.
-func (m *MQTT) Disconnect(milliseconds int) error {
+func (m *MQTT) Disconnect(milliseconds time.Duration) error {
 	m.client.Disconnect(uint(milliseconds))
 	return nil
 }

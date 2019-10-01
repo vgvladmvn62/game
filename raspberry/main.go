@@ -5,14 +5,14 @@ import (
 
 	"github.com/vrischmann/envconfig"
 
-	"github.com/kyma-incubator/bullseye-showcase/raspberry/mqtt"
+	"github.com/kyma-incubator/bullseye-showcase/backend/pkg/mqtt"
 	"github.com/kyma-incubator/bullseye-showcase/raspberry/slab"
 )
 
 // Config stores entire application configuration.
 type Config struct {
-	MQTT mqtt.Config
 	Slab slab.Config
+	MQTT mqtt.Config
 }
 
 func main() {
@@ -39,7 +39,12 @@ func main() {
 		}
 	}()
 
-	repository.OffAll()
+	err = repository.OffAll()
+	if err != nil {
+		log.Fatalln(err)
+		return
+	}
+
 	err = repository.OpenDB(config.Slab.Repository.Path)
 	if err != nil {
 		log.Fatalln(err)
