@@ -53,8 +53,6 @@ func main() {
 
 	repository.LoadOrAssign()
 
-	log.Println("Creating new MQTT client")
-
 	cli, err := mqtt.FromConfig(&config.MQTT)
 	if err != nil {
 		log.Fatalln(err)
