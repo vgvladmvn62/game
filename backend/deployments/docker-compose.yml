@@ -14,10 +14,11 @@ services:
       - EC_HOST_STATIC=https://localhost:9002
       - EC_HTTP_CLIENT_TIMEOUT_SECONDS=20
 
-      - HW_MQTT_BROKER=tcp://test.mosquitto.org:1883
+      - HW_MQTT_BROKER=tcp://mosquitto:1883
     depends_on:
       - "db"
       - "ui"
+      - "mqtt"
     ports:
       - "8080:8080"
   db:
@@ -29,8 +30,18 @@ services:
     volumes:
     - devDB01:/var/lib/postgresql/data
   ui:
-    image: "empty"
+    image: "empty""
     ports:
       - "80:80"
-volumes: 
+  mqtt:
+    image: eclipse-mosquitto:latest
+    hostname: mosquitto
+    container_name: mosquitto
+    expose:
+      - "1883"
+      - "9001"
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+volumes:
   devDB01:
