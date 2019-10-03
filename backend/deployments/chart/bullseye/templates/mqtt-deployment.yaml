@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-mqtt
+  name: {{ .Release.Name }}-mqtt-broker
 spec:
   replicas: 1
   selector:
@@ -19,9 +19,9 @@ spec:
         app: "bullseye-mqtt"
     spec:
       containers:
-        - name: bullseye
+        - name: mqtt-broker
           image: {{ .Values.mqtt.image }}
           imagePullPolicy: Always
+          restartPolicy: OnFailure
           ports:
-            - "1883:1883"
-            - "9001:9001"
+            - containerPort: 1883

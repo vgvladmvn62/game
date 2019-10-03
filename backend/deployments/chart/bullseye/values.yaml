@@ -4,7 +4,7 @@ ec:
 
 mqttServer: "tcp://test.mosquitto.org:1883"
 
-kymaClusterHostname: kyma.local
+kymaClusterHostname: "kyma.local"
 
 backend:
   subdomain: "backend"
@@ -15,9 +15,9 @@ frontend:
   image: "empty"
 
 mqtt:
-  subdomain: "mqtt"
-  image: "eclipse-mosquitto:latest"
+  subdomain: "mqtt-broker"
+  image: "empty"
 
 postgres:
-  postgresqlUsername: postgres
-  postgresqlPassword: password
+  postgresqlUsername: "postgres"
+  postgresqlPassword: "password"

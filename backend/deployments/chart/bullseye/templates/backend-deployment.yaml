@@ -22,6 +22,7 @@ spec:
       - name: bullseye
         image: {{ .Values.backend.image }}
         imagePullPolicy: Always
+        restartPolicy: OnFailure
         env:
         - name: DB_HOST
           value: {{ .Release.Name }}-postgres
@@ -43,6 +44,7 @@ spec:
           value: {{ .Values.ec.site }}
         - name: HW_MQTT_BROKER
           value: {{ .Values.mqttServer }}
+          #value: tcp://{{ .Values.mqtt.subdomain }}.{{ .Values.kymaClusterHostname }}:1883
 
         ports:
         - containerPort: 8080

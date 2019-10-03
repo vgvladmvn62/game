@@ -8,6 +8,6 @@ spec:
     app: bullseye-mqtt
   ports:
     - name: broker
-      port: 9001
-      targetPort: 9001
+      port: 1883
+      targetPort: 1883
       protocol: TCP
