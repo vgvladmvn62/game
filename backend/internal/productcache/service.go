@@ -99,7 +99,7 @@ func (s *Service) UpdateProducts() error {
 
 	err = s.updateProductsFromStands(existingStands)
 	if err != nil {
-		log.Println("Could not force update products in Product Cache:", err)
+		log.Println("Could not force update products in Product Cache:")
 		return err
 	}
 
