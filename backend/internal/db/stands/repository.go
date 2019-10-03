@@ -28,7 +28,11 @@ type productService interface {
 // NewRepository creates new ShelfRepository.
 func NewRepository(data *db.Database) *Repository {
 	repo := &Repository{database: data}
-	repo.CreateTable()
+	err := repo.CreateTable()
+	if err != nil {
+		log.Println(err)
+	}
+
 	return repo
 }
 
@@ -39,6 +43,7 @@ func (repository *Repository) GetAllStands() ([]StandDTO, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	defer func() { _ = rows.Close() }()
 
 	activeStand := StandDTO{}
@@ -123,18 +128,29 @@ func (repository *Repository) GetAllInactiveStandsMap() (map[int]string, error) 
 // AddStand assigns stand to product in database.
 func (repository *Repository) AddStand(standID string, productID string, active bool) (err error) {
 	_, err = repository.database.Exec("INSERT INTO stands(id, product_id, active) VALUES ($1, $2, $3)", standID, productID, active)
+	if err != nil {
+		log.Println(err)
+	}
+
 	return
 }
 
 // DropTable drops tables used by stands repository.
 func (repository *Repository) DropTable() (err error) {
 	_, err = repository.database.Exec("DROP TABLE stands")
+	if err != nil {
+		log.Println(err)
+	}
+
 	return
 }
 
 // CreateTable creates tables used by stands repository.
 func (repository *Repository) CreateTable() (err error) {
 	_, err = repository.database.Exec("CREATE TABLE IF NOT EXISTS stands (id INTEGER PRIMARY KEY, product_id TEXT, active BOOLEAN)")
-	log.Println("Creating stands ", err)
+	if err != nil {
+		log.Println(err)
+	}
+
 	return
 }

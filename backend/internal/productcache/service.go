@@ -87,19 +87,20 @@ func (s *Service) UpdateProducts() error {
 
 	err = s.createTableIfNotExists()
 	if err != nil {
-		log.Println("Error creating tables in Product Cache")
+		log.Println("Error creating table in Product Cache")
 		return err
 	}
 
 	existingStands, err := s.standsRepository.GetAllStands()
 	if err != nil {
 		log.Println("Error getting stands in Product Cache")
-		return nil
+		return err
 	}
 
 	err = s.updateProductsFromStands(existingStands)
 	if err != nil {
 		log.Println("Could not force update products in Product Cache:", err)
+		return err
 	}
 
 	return nil
@@ -111,7 +112,7 @@ func (s *Service) ForceUpdateProducts() error {
 
 	err = s.createTableIfNotExists()
 	if err != nil {
-		log.Println("Error creating tables in Product Cache")
+		log.Println("Error creating table in Product Cache")
 		return err
 	}
 
