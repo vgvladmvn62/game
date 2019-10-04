@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "bullseye-mqtt"
+      app: {{ .Release.Name }}-mqtt-broker
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -16,7 +16,7 @@ spec:
       annotations:
         sidecar.istio.io/inject: "true"
       labels:
-        app: "bullseye-mqtt"
+        app: {{ .Release.Name }}-mqtt-broker
     spec:
       containers:
         - name: mqtt-broker

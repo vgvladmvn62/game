@@ -1,7 +1,7 @@
 apiVersion: gateway.kyma-project.io/v1alpha2
 kind: Api
 metadata:
-  name: {{ .Release.Name }}-expose-mqtt-broker
+  name: {{ .Release.Name }}-mqtt-broker
 spec:
   service:
     name: {{ .Release.Name }}-mqtt-broker
