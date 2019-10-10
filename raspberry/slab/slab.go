@@ -2,6 +2,7 @@ package slab
 
 import (
 	"io"
+	"log"
 	"sync"
 	"time"
 
@@ -51,7 +52,10 @@ func New(portPath string) (*Slab, error) {
 	val := make(chan bool)
 	go func(port io.Reader) {
 		buf := make([]byte, 20)
-		s.port.Read(buf)
+		_, err := s.port.Read(buf)
+		if err != nil {
+			log.Println(err)
+		}
 		val <- true
 	}(s.port)
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/vrischmann/envconfig"
 
@@ -22,6 +23,10 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 		return
+	}
+
+	if len(os.Args) == 2 {
+		config.MQTT.MQTT.Broker = os.Args[1]
 	}
 
 	log.Println("Config: ", config)
