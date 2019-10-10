@@ -4,7 +4,7 @@ package mqtt
 type BrokerError string
 
 const (
-	// BrokerConnectionError when
+	// BrokerConnectionError when client can not connect to broker.
 	BrokerConnectionError BrokerError = "BROKER_CONNECTION_ERROR - Could not connect to the MQTT broker"
 )
 
