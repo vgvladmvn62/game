@@ -43,6 +43,6 @@ spec:
         - name: EC_PRODUCTS_CATALOG
           value: {{ .Values.ec.site }}
         - name: HW_MQTT_BROKER
-          value: 'tcp://{{ .Values.mqtt.subdomain }}.{{ .Values.kymaClusterHostname }}:1883'
+          value: 'tcp://{{ .Values.mqtt.subdomain }}.{{ .Values.kymaClusterHostname }}:31400'
         ports:
         - containerPort: 8080

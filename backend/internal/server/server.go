@@ -133,7 +133,5 @@ func (s *Server) Start() error {
 		return err
 	}
 
-	log.Println("Server starting at: ", address)
-
 	return http.ListenAndServe(address, s.middleware.Then(&s.Router))
 }
