@@ -35,14 +35,14 @@ spec:
         - name: DB_PASSWORD
           value: {{ .Values.postgres.postgresqlPassword }}
         - name: EC_HOST_API
-          value: "{{ .Values.ec.url }}/rest/v2"
+          value: {{ .Values.ec.url }}{{ .Values.ec.api }}
         - name: EC_HOST_STATIC
-          value: "{{ .Values.ec.url }}"
+          value: {{ .Values.ec.url }}
         - name: EC_HTTP_CLIENT_TIMEOUT_SECONDS
           value: "60"
         - name: EC_PRODUCTS_CATALOG
           value: {{ .Values.ec.site }}
         - name: HW_MQTT_BROKER
-          value: 'tcp://{{ .Values.mqtt.subdomain }}.{{ .Values.kymaClusterHostname }}:31400'
+          value: "tcp://{{ .Values.mqtt.subdomain }}.{{ .Values.kyma.cluster.hostname }}:{{ .Values.mqtt.port }}"
         ports:
         - containerPort: 8080

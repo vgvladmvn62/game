@@ -6,4 +6,4 @@ spec:
   service:
     name: {{ .Release.Name }}-mqtt-broker
     port: 1883
-  hostname: {{ .Values.mqtt.subdomain }}.{{ .Values.kymaClusterHostname }}
+  hostname: {{ .Values.mqtt.subdomain }}.{{ .Values.kyma.cluster.hostname }}

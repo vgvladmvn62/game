@@ -1,22 +1,27 @@
 ec:
   url: "https://localhost:9002"
+  api: "/rest/v2"
   site: "electronics"
 
-mqttServer: "tcp://test.mosquitto.org:1883"
-
-kymaClusterHostname: "kyma.local"
+kyma:
+  cluster:
+    hostname: "kyma.local"
+    internal: "svc.cluster.local"
 
 backend:
   subdomain: "backend"
-  image: "empty"
+  image: ""
 
 frontend:
   subdomain: "bullseye"
-  image: "empty"
+  image: ""
 
 mqtt:
   subdomain: "mqtt-broker"
-  image: "empty"
+  image: ""
+  port: 31400
+  gateway:
+    name: "gateway"
 
 postgres:
   postgresqlUsername: "postgres"

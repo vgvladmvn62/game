@@ -1,3 +1,3 @@
-Bullseye will soon be exposed on https://{{ .Values.frontend.subdomain }}.{{ .Values.kymaClusterHostname }}
-You can also access backend on https://{{ .Values.backend.subdomain }}.{{ .Values.kymaClusterHostname }}
-MQTT broker accepts requests on tcp://{{ .Values.mqtt.subdomain }}.{{ .Values.kymaClusterHostname }}:1883
+Bullseye will soon be exposed on https://{{ .Values.frontend.subdomain }}.{{ .Values.kyma.cluster.hostname }}
+You can also access backend on https://{{ .Values.backend.subdomain }}.{{ .Values.kyma.cluster.hostname }}
+MQTT broker accepts requests on tcp://{{ .Values.mqtt.subdomain }}.{{ .Values.kyma.cluster.hostname }}:{{ .Values.mqtt.port }}
