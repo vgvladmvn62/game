@@ -51,7 +51,7 @@
     version in scope of given namespace.
    #+BEGIN_SRC shell
      helm dependency update deployments/chart/bullseye --tls
-     helm install deployments/chart/bullseye -n {release name} --namespace {namespace name} --set "kyma.cluster.hostname={cluster URL}","ec.url={URL to EC instance}","backend.image={name}","frontend.image={name}} --tls
+     helm install deployments/chart/bullseye -n {release name} --namespace {namespace name} --set "kyma.cluster.hostname={cluster URL}","ec.url={URL to EC instance}","backend.image={name}","frontend.image={name}","mqtt.image=eclipse-mosquitto" --tls
    #+END_SRC
 
    The helm chart contains both backend and frontend.
