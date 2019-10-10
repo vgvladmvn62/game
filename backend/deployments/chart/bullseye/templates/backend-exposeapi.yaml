@@ -1,9 +1,9 @@
 apiVersion: gateway.kyma-project.io/v1alpha2
 kind: Api
 metadata:
-  name: {{ .Release.Name }}-expose-back
+  name: {{ .Release.Name }}-expose-backend
 spec:
     service:
       name: {{ .Release.Name }}-backend
       port: 8080
-    hostname: {{ .Values.backend.subdomain }}.{{ .Values.kymaClusterHostname }}
+    hostname: {{ .Values.backend.subdomain }}.{{ .Values.kyma.cluster.hostname }}

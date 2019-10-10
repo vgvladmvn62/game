@@ -6,4 +6,4 @@ spec:
     service:
       name: {{ .Release.Name }}-frontend
       port: 80
-    hostname: {{ .Values.frontend.subdomain }}.{{ .Values.kymaClusterHostname }}
+    hostname: {{ .Values.frontend.subdomain }}.{{ .Values.kyma.cluster.hostname }}

@@ -51,7 +51,7 @@
     version in scope of given namespace.
    #+BEGIN_SRC shell
      helm dependency update deployments/chart/bullseye --tls
-     helm install deployments/chart/bullseye -n {release name} --namespace {namespace name} --set "kymaClusterHostname={cluster URL}","ec.url={URL to EC instance}","backend.image={name}","frontend.image={name}} --tls
+     helm install deployments/chart/bullseye -n {release name} --namespace {namespace name} --set "kyma.cluster.hostname={cluster URL}","ec.url={URL to EC instance}","backend.image={name}","frontend.image={name}","mqtt.image=eclipse-mosquitto" --tls
    #+END_SRC
 
    The helm chart contains both backend and frontend.
@@ -61,13 +61,18 @@
     | Parameter                     | Default                         | Description                                      |
     |-------------------------------+---------------------------------+--------------------------------------------------|
     | ~ec.url~                      | ~https://localhost:9002~        | URL to EC instance.                              |
+    | ~ec.api~                      | ~/rest/v2~                      | Prefix to access EC API.                         |
     | ~ec.site~                     | ~electronics~                   | Base site for accessing web resources from EC.   |
-    | ~mqttServer~                  | ~tcp://test.mosquitto.org:1883~ | URL of MQTT server (must match RPI).             |
-    | ~kymaClusterHostname~         | ~kyma.local~                    | URL of your cluster (mainly for exposing API).   |
+    | ~kyma.cluster.hostname~       | ~kyma.local~                    | URL of your cluster (mainly for exposing API).   |
+    | ~kyma.cluster.internal~       | ~svc.cluster.local~             | Internal URL of cluster.                         |
     | ~backend.subdomain~           | ~backend~                       | Name of backend subdomain (used to expose API).  |
     | ~backend.image~               | ~none~                          | Image of backend application.                    |
     | ~frontend.subdomain~          | ~bullseye~                      | Name of frontend subdomain (used to expose API). |
     | ~frontend.image~              | ~none~                          | Image of frontend application.                   |
+    | ~mqtt.subdomain~              | ~mqtt-broker~                   | Name of broker subdomain (used to expose API).   |
+    | ~mqtt.image~                  | ~none~                          | Image of MQTT broker application.                |
+    | ~mqtt.port~                   | ~31400~                         | Exposed port to communicate with broker.         |
+    | ~mqtt.gateway.name~           | ~gateway~                       | Name of MQTT broker gateway.                     |
     | ~postgres.postgresqlUsername~ | ~postgres~                      | PostgreSQL database username.                    |
     | ~postgres.postgresqlPassword~ | ~password~                      | PostgreSQL database password.                    |
 
