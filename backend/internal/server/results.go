@@ -2,6 +2,7 @@ package server
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -90,7 +91,7 @@ type hardwarer interface {
 func HighlightMatchedProducts(hw hardwarer, matches []matching.MatchedProductDTO) error {
 	err := hw.TurnOffLights()
 	if err != nil {
-		return err
+		log.Println(err)
 	}
 
 	for _, id := range selectPlatformsToHighlightFromSortedMatches(matches) {
@@ -101,7 +102,7 @@ func HighlightMatchedProducts(hw hardwarer, matches []matching.MatchedProductDTO
 
 		err = hw.TurnOnGreenLight(byte(idAsInt))
 		if err != nil {
-			return err
+			log.Println(err)
 		}
 	}
 

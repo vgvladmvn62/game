@@ -2,7 +2,7 @@ apiVersion: v1
 data:
   config.js: |-
     window.configuration = {
-        backendURL: 'https://{{ .Values.backend.subdomain }}.{{ .Values.kymaClusterHostname }}'
+        backendURL: "https://{{ .Values.backend.subdomain }}.{{ .Values.kyma.cluster.hostname }}"
     };
 kind: ConfigMap
 metadata:

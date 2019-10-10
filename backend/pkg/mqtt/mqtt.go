@@ -137,7 +137,7 @@ func FromConfig(config *Config) (*MQTT, error) {
 	cli.client = mqtt.NewClient(opts)
 
 	if token := cli.client.Connect(); token.Wait() && token.Error() != nil {
-		return nil, token.Error()
+		return &cli, token.Error()
 	}
 
 	return &cli, cli.subscribe(cli.topic)
@@ -174,6 +174,11 @@ func (m *MQTT) Publish(cmd Command) error {
 	}
 
 	log.Println("Sending ", m.topic, ": ", string(msg))
+
+	if !m.client.IsConnected() {
+		return BrokerConnectionError
+	}
+
 	token := m.client.Publish(m.topic, 0, false, msg)
 	token.Wait()
 

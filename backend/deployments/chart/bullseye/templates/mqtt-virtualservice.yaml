@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Release.Name }}-mqtt-broker
+spec:
+  gateways:
+  - {{ .Release.Name }}-{{ .Values.mqtt.gateway.name}}.{{ .Release.Name }}.{{ .Values.kyma.cluster.internal }}
+  hosts:
+  - {{ .Values.mqtt.subdomain }}.{{ .Values.kyma.cluster.hostname }}
+  tcp:
+  - match:
+    - port: {{ .Values.mqtt.port }}
+    route:
+      - destination:
+          host: {{ .Release.Name }}-mqtt-broker.{{ .Release.Name }}.{{ .Values.kyma.cluster.internal }}
+          port:
+            number: 1883
