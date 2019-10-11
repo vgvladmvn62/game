@@ -9,9 +9,9 @@ import (
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/server/mocks"
 
 	"github.com/go-http-utils/logger"
-	"github.com/stretchr/testify/assert"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/server"
+	"github.com/stretchr/testify/assert"
 )
 
 func prepareCorrectConfigForTests() *server.Config {
@@ -37,13 +37,13 @@ func fixedProductDTO() ec.ProductDTO {
 }
 
 func fixedAPIError() server.APIError {
-	return server.NewAPIError("An OCC error occured", http.StatusNotFound)
+	return server.NewAPIError("an OCC error occurred", http.StatusNotFound)
 }
 
 func TestServer(t *testing.T) {
 	cache := &mocks.ProductCacheService{}
 	cache.On("GetProductDetailsByID", "1").Return(fixedProductDTO(), nil)
-	cache.On("GetProductDetailsByID", "10").Return(ec.ProductDTO{}, errors.New("An OCC error occured"))
+	cache.On("GetProductDetailsByID", "10").Return(ec.ProductDTO{}, errors.New("an OCC error occurred"))
 
 	srv := server.NewServer(prepareCorrectConfigForTests(), cache, nil, nil, nil, nil, nil, nil)
 
@@ -74,7 +74,7 @@ func TestServer(t *testing.T) {
 			path: "/product/10",
 			code: http.StatusNotFound,
 			body: `{
-					"message": "An OCC error occured",
+					"message": "an OCC error occurred",
 					"code": 404
 				}`,
 		},

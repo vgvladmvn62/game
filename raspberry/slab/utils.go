@@ -32,7 +32,7 @@ type Event struct {
 // It can signal detection with lighting slab.
 func ObjectListener(s *Slab, bus evbus.Bus) error {
 	prev := false
-	state := false
+	var state bool
 	var err error
 	for {
 		state, err = s.Sensor()

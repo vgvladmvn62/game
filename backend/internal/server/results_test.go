@@ -3,9 +3,9 @@ package server_test
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/matching"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/server"
+	"github.com/stretchr/testify/assert"
 )
 
 type hardwarerMock struct {
@@ -16,7 +16,7 @@ func (hw *hardwarerMock) TurnOffLights() error {
 	return nil
 }
 
-func (hw *hardwarerMock) TurnOnGreenLight(platformID byte) error {
+func (hw *hardwarerMock) TurnOnLight(platformID byte) error {
 	hw.TurnedOnStands = append(hw.TurnedOnStands, platformID)
 	return nil
 }
@@ -29,9 +29,10 @@ func TestIfMatchedProductsAreSetToBeHighlighted(t *testing.T) {
 
 	//when
 
-	server.HighlightMatchedProducts(hw, matches)
+	err := server.HighlightMatchedProducts(hw, matches)
 
 	//then
 
 	assert.Equal(t, hw.TurnedOnStands, []byte{1, 2})
+	assert.Equal(t, nil, err)
 }

@@ -53,7 +53,7 @@ func (p *ProductDTO) Equals(product ProductDTO) bool {
 		p.Name == product.Name &&
 		p.Image == product.Image &&
 		p.Price == product.Price {
-			return false
+		return false
 	}
 
 	return true

@@ -2,9 +2,9 @@ package ec
 
 import (
 	"encoding/json"
-		"io/ioutil"
+	"fmt"
+	"io/ioutil"
 	"net/http"
-		"fmt"
 )
 
 // ProductService provides methods operating on products.
@@ -42,7 +42,7 @@ func (p *ProductService) GetProductDetailsByID(ID string) (ProductDTO, error) {
 	response, err := p.Doer.Do(request)
 
 	if err == nil {
-		if response.StatusCode >= 400 && response.StatusCode < 500 {
+		if response.StatusCode >= http.StatusBadRequest && response.StatusCode < http.StatusInternalServerError {
 			return ProductDTO{}, RequestFailedError
 		}
 	} else {
@@ -86,7 +86,7 @@ func (p *ProductService) GetProductJSONByID(ID string) (string, error) {
 	response, err := p.Doer.Do(request)
 
 	if err == nil {
-		if response.StatusCode >= 400 && response.StatusCode < 500 {
+		if response.StatusCode >= http.StatusBadRequest && response.StatusCode < http.StatusInternalServerError {
 			return "", RequestFailedError
 		}
 	} else {

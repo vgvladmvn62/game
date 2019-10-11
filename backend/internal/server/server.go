@@ -74,7 +74,7 @@ type matchingService interface {
 
 type hardwareService interface {
 	TurnOffLights() error
-	TurnOnGreenLight(byte) error
+	TurnOnLight(byte) error
 }
 
 // NewServer initializes server with needed connectors and default settings.
