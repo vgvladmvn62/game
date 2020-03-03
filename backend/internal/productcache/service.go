@@ -99,7 +99,7 @@ func (s *Service) UpdateProducts() error {
 
 	err = s.updateProductsFromStands(existingStands)
 	if err != nil {
-		log.Println("Could not force update products in Product Cache:")
+		log.Println("Could not force update products in Product Cache")
 		return err
 	}
 
@@ -124,7 +124,8 @@ func (s *Service) ForceUpdateProducts() error {
 
 	err = s.forceUpdateProductsFromStands(existingStands)
 	if err != nil {
-		log.Println("Could not force update products in Product Cache:", err)
+		log.Println("Could not force update products in Product Cache")
+		return err
 	}
 
 	return nil
@@ -222,8 +223,6 @@ func (s *Service) forceUpdateProductsFromStands(existingStands []stands.StandDTO
 			return err
 		}
 	}
-
-	fmt.Println("Force updated products")
 
 	return nil
 }

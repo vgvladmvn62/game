@@ -1,18 +1,18 @@
 package server
 
 import (
-	"net/http"
 	"encoding/json"
 	"io/ioutil"
 	"log"
+	"net/http"
 )
 
-// JSONData stores array of QuestionDTOs
+// JSONData stores array of QuestionDTOs.
 type JSONData struct {
 	Array []QuestionDTO `json:"questions"`
 }
 
-// QuestionDTO is used to store questions and answers from JSON
+// QuestionDTO is used to store questions and answers from JSON.
 type QuestionDTO struct {
 	Text    string   `db:"question" json:"text"`
 	Answers []string `db:"answers" json:"answers"`
@@ -27,7 +27,7 @@ func (s *Server) questionsGETHandler(w http.ResponseWriter, r *http.Request) {
 
 	data.Array, err = s.questionsService.GetAllQuestions()
 	if err != nil {
-		_ = NewAPIError(err.Error(), 500).Send(w)
+		_ = NewAPIError(err.Error(), http.StatusBadRequest).Send(w)
 		return
 	}
 

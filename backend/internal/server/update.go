@@ -11,7 +11,7 @@ func (s *Server) updateGETHandler(w http.ResponseWriter, r *http.Request) {
 
 	err = s.productCacheService.ForceUpdateProducts()
 	if err != nil {
-		log.Println("Could not force update products info: ", err)
+		log.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)
 	} else {
 		w.WriteHeader(http.StatusOK)

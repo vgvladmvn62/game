@@ -6,9 +6,9 @@ import (
 
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/stand"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db/attributes"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
+	"github.com/stretchr/testify/assert"
 )
 
 type shelfFetcherMock struct {

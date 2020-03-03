@@ -3,6 +3,7 @@ package products
 import (
 	"database/sql"
 	"encoding/json"
+	"log"
 
 	//"github.com/lib/pq"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db"
@@ -17,7 +18,12 @@ type Repository struct {
 // NewRepository creates new Products Repository.
 func NewRepository(db *db.Database) *Repository {
 	repo := &Repository{db}
-	repo.CreateTable()
+
+	err := repo.CreateTable()
+	if err != nil {
+		log.Println(err)
+	}
+
 	return repo
 }
 
@@ -152,6 +158,10 @@ func (repository *Repository) Exists() (bool, error) {
 	for rows.Next() {
 		var text string
 		err = rows.Scan(&text)
+		if err != nil {
+			return false, err
+		}
+
 		if text == "true" {
 			return true, nil
 		}

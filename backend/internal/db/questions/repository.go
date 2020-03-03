@@ -1,9 +1,9 @@
 package questions
 
 import (
-	"github.com/lib/pq"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/db"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/server"
+	"github.com/lib/pq"
 )
 
 // Repository holds a client of database.

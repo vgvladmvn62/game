@@ -1,5 +1,8 @@
 # Bullseye Showcase
 
+[![GoDoc](https://godoc.org/github.com/kyma-incubator/bullseye-showcase?status.svg)](https://godoc.org/github.com/kyma-incubator/bullseye-showcase)
+[![Go Report Card](https://goreportcard.com/badge/kyma-incubator/bullseye-showcase)](https://goreportcard.com/kyma-incubator/bullseye-showcase)
+
 ## Overview
    Bullseye is a smart shelf system that suggests products depending on preferences.
    Customer fills in a questionnaire consisting of single choice questions and

@@ -4,10 +4,10 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/ec"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/productcache"
 	"github.com/kyma-incubator/bullseye-showcase/backend/internal/productcache/mocks"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetProductDetailsByIDFromRepo(t *testing.T) {

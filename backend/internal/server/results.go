@@ -85,9 +85,10 @@ func (s *Server) resultsPOSTHandler(w http.ResponseWriter, r *http.Request) {
 
 type hardwarer interface {
 	TurnOffLights() error
-	TurnOnGreenLight(platformID byte) error
+	TurnOnLight(platformID byte) error
 }
 
+// HighlightMatchedProducts on stands.
 func HighlightMatchedProducts(hw hardwarer, matches []matching.MatchedProductDTO) error {
 	err := hw.TurnOffLights()
 	if err != nil {
@@ -100,7 +101,7 @@ func HighlightMatchedProducts(hw hardwarer, matches []matching.MatchedProductDTO
 			return err
 		}
 
-		err = hw.TurnOnGreenLight(byte(idAsInt))
+		err = hw.TurnOnLight(byte(idAsInt))
 		if err != nil {
 			log.Println(err)
 		}
@@ -109,8 +110,8 @@ func HighlightMatchedProducts(hw hardwarer, matches []matching.MatchedProductDTO
 	return nil
 }
 
+// selectPlatformsToHighlightFromSortedMatches requires matches to be sorted.
 func selectPlatformsToHighlightFromSortedMatches(matches []matching.MatchedProductDTO) []string {
-	// function requires matches to be sorted (which they are and there is test for it in the matchingService)
 	var platforms []string
 
 	if len(matches) == 0 {

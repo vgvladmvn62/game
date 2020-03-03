@@ -57,7 +57,7 @@ func (s *Server) attributesPOSTHandler(w http.ResponseWriter, r *http.Request) {
 
 	err = s.productCacheService.ForceUpdateProducts()
 	if err != nil {
-		log.Println("Could not force update products info: ", err)
+		log.Println(err)
 	}
 
 	w.WriteHeader(http.StatusOK)
@@ -71,14 +71,14 @@ func (s *Server) attributesGETHandler(w http.ResponseWriter, r *http.Request) {
 	activeStands, err := s.standsRepository.GetAllStands()
 
 	if err != nil {
-		_ = NewAPIError(err.Error(), 500).Send(w)
+		_ = NewAPIError(err.Error(), http.StatusBadRequest).Send(w)
 		return
 	}
 
 	for _, stand := range activeStands {
 		productAttributes, err := s.attributesRepository.GetAttributes(stand.ProductID)
 		if err != nil {
-			_ = NewAPIError(err.Error(), 500).Send(w)
+			_ = NewAPIError(err.Error(), http.StatusBadRequest).Send(w)
 			return
 		}
 

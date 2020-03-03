@@ -50,7 +50,7 @@ func (s *Server) standsPOSTHandler(w http.ResponseWriter, r *http.Request) {
 
 	err = s.productCacheService.ForceUpdateProducts()
 	if err != nil {
-		log.Println("Could not force update products info: ", err)
+		log.Println(err)
 	}
 
 	w.WriteHeader(http.StatusOK)

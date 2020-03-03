@@ -5,6 +5,10 @@ import (
 	"github.com/kyma-incubator/bullseye-showcase/backend/pkg/mqtt"
 )
 
+var (
+	light = mqtt.RGB{R: 50, G: 255, B: 50}
+)
+
 // Service allows to communicate with hardware via easy API
 type Service struct {
 	client       mqttClient
@@ -35,7 +39,7 @@ func (hs *Service) TurnOffLights() error {
 	return hs.commander.DisableAllLights()
 }
 
-// TurnOnGreenLight sends platform color command to light up platform with green light.
-func (hs *Service) TurnOnGreenLight(platformID byte) error {
-	return hs.commander.PlatformFadePixels(platformID, mqtt.RGB{50, 255, 50}, 50)
+// TurnOnLight sends platform color command to light up platform with green light.
+func (hs *Service) TurnOnLight(platformID byte) error {
+	return hs.commander.PlatformFadePixels(platformID, light, 50)
 }

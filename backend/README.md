@@ -3,7 +3,7 @@
 ## Overview
 
 This part contains implementation of Bullseye server which handles all requests from
-user, manages configuration, communicates with Enterprice Commerce instance and send requests
+user, manages configuration, communicates with Enterprise Commerce instance and send requests
 to Bullseye Raspberry PI client using MQTT.
 
 ## Prerequisites
