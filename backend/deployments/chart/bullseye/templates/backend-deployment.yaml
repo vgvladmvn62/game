@@ -22,7 +22,6 @@ spec:
       - name: bullseye
         image: {{ .Values.backend.image }}
         imagePullPolicy: Always
-        restartPolicy: OnFailure
         env:
         - name: DB_HOST
           value: {{ .Release.Name }}-postgres

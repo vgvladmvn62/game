@@ -7,6 +7,8 @@ kyma:
   cluster:
     hostname: "kyma.local"
     internal: "svc.cluster.local"
+    gateway: "kyma-gateway"
+    namespace: "kyma-system"
 
 backend:
   subdomain: "backend"

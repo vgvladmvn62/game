@@ -22,6 +22,5 @@ spec:
         - name: mqtt-broker
           image: {{ .Values.mqtt.image }}
           imagePullPolicy: Always
-          restartPolicy: OnFailure
           ports:
             - containerPort: 1883
