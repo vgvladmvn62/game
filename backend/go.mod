@@ -10,7 +10,6 @@ require (
 	github.com/gorilla/mux v1.6.2
 	github.com/justinas/alice v0.0.0-20171023064455-03f45bd4b7da
 	github.com/kr/pretty v0.1.0 // indirect
-	github.com/kyma-incubator/bullseye-showcase v0.0.0-20190923101046-d808d22adac8 // indirect
 	github.com/lib/pq v0.0.0-20180523175426-90697d60dd84
 	github.com/stretchr/objx v0.2.0 // indirect
 	github.com/stretchr/testify v1.4.0

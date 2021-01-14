@@ -1,9 +1,19 @@
-apiVersion: gateway.kyma-project.io/v1alpha2
-kind: Api
+apiVersion: gateway.kyma-project.io/v1alpha1
+kind: APIRule
 metadata:
   name: {{ .Release.Name }}-expose-front
 spec:
-    service:
-      name: {{ .Release.Name }}-frontend
-      port: 80
-    hostname: {{ .Values.frontend.subdomain }}.{{ .Values.kyma.cluster.hostname }}
+  service:
+    name: {{ .Release.Name }}-frontend
+    port: 80
+    host: {{ .Values.frontend.subdomain }}.{{ .Values.kyma.cluster.hostname }}
+  gateway: {{ .Values.kyma.cluster.gateway }}.{{ .Values.kyma.cluster.namespace }}.{{ .Values.kyma.cluster.internal }}
+  rules:
+    - path: /.*
+      methods: ["GET"]
+      accessStrategies:
+        - handler: allow
+    - path: /post
+      methods: ["POST"]
+      accessStrategies:
+        - handler: allow
