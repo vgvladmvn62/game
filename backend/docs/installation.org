@@ -1,7 +1,7 @@
 * Installation
 
   #+BEGIN_QUOTE
-  *NOTE:* Bullseye's server is not able to start without running database.
+  *NOTE:*Bullseye's server is not able to start without running database.
   As a result backend restarts a few times before db is ready.
   In addition, there is no initial configuration provided on startup.
   The reason is a potential risk of overriding existing configuration provided by a user.
@@ -38,20 +38,20 @@
     | *HW_MQTT_KEEPALIVE_SECONDS*       | ~2~                              | Keep-alive time.                                  |
     | *HW_MQTT_TIMEOUT_SECONDS*         | ~2~                              | Timeout for commands.                             |
     | *HW_MQTT_DISCONNECT_MILLISECONDS* | ~250~                            | Disconnect time.                                  |
-
+    |-----------------------------------+----------------------------------+---------------------------------------------------|
      
 ** Kyma
-   In order install Bullseye on cluster use a helm chart located in ~./chart/bullseye/~.
+   In order to install Bullseye on Kyma cluster, use a helm chart located in ~./chart/bullseye/~.
    Use helm chart's values to configure bullseye. They are listed in a [[#values][section below]].
-   Parameters should be passed to helm the following way:
+   Parameters should be passed to helm the following way: (there should be no spaces between values)
    #+BEGIN_SRC shell
     --set "variable1=value1","variable2=value2",...,"variablen=valuen"
    #+END_SRC
     Make sure to pass appropriate values for "release name" and "namespace name" not to override deployed application
     version in scope of given namespace.
    #+BEGIN_SRC shell
-     helm dependency update deployments/chart/bullseye --tls
-     helm install deployments/chart/bullseye -n {release name} --namespace {namespace name} --set "kyma.cluster.hostname={cluster URL}","ec.url={URL to EC instance}","backend.image={name}","frontend.image={name}","mqtt.image=eclipse-mosquitto" --tls
+     helm dependency update deployments/chart/bullseye
+     helm install deployments/chart/bullseye -n {release name} --namespace {namespace name} --set "kyma.cluster.hostname={cluster URL}","ec.url={URL to EC instance}","backend.image={name}","frontend.image={name}","mqtt.image=eclipse-mosquitto"
    #+END_SRC
 
    The helm chart contains both backend and frontend.
@@ -64,15 +64,12 @@
     | ~ec.api~                      | ~/rest/v2~                      | Prefix to access EC API.                         |
     | ~ec.site~                     | ~electronics~                   | Base site for accessing web resources from EC.   |
     | ~kyma.cluster.hostname~       | ~kyma.local~                    | URL of your cluster (mainly for exposing API).   |
-    | ~kyma.cluster.internal~       | ~svc.cluster.local~             | Internal URL of cluster.                         |
     | ~backend.subdomain~           | ~backend~                       | Name of backend subdomain (used to expose API).  |
     | ~backend.image~               | ~none~                          | Image of backend application.                    |
     | ~frontend.subdomain~          | ~bullseye~                      | Name of frontend subdomain (used to expose API). |
     | ~frontend.image~              | ~none~                          | Image of frontend application.                   |
     | ~mqtt.subdomain~              | ~mqtt-broker~                   | Name of broker subdomain (used to expose API).   |
     | ~mqtt.image~                  | ~none~                          | Image of MQTT broker application.                |
-    | ~mqtt.port~                   | ~31400~                         | Exposed port to communicate with broker.         |
-    | ~mqtt.gateway.name~           | ~gateway~                       | Name of MQTT broker gateway.                     |
     | ~postgres.postgresqlUsername~ | ~postgres~                      | PostgreSQL database username.                    |
     | ~postgres.postgresqlPassword~ | ~password~                      | PostgreSQL database password.                    |
 
