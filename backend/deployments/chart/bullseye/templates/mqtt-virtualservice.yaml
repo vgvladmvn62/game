@@ -4,14 +4,14 @@ metadata:
   name: {{ .Release.Name }}-mqtt-broker
 spec:
   gateways:
-    - {{ .Release.Name }}-{{ .Values.mqtt.gateway.name}}.{{ .Release.Namespace }}.{{ .Values.kyma.cluster.internal }}
+    - {{ .Release.Name }}-gateway.{{ .Release.Namespace }}.svc.cluster.local
   hosts:
     - {{ .Values.mqtt.subdomain }}.{{ .Values.kyma.cluster.hostname }}
   tcp:
     - match:
-        - port: {{ .Values.mqtt.port }}
+        - port: 31400
       route:
         - destination:
-            host: {{ .Release.Name }}-mqtt-broker.{{ .Release.Namespace }}.{{ .Values.kyma.cluster.internal }}
+            host: {{ .Release.Name }}-mqtt-broker.{{ .Release.Namespace }}.svc.cluster.local
             port:
               number: 1883
