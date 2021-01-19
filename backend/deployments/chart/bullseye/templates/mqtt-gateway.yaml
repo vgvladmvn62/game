@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: {{ .Release.Name }}-{{ .Values.mqtt.gateway.name}}
+  name: {{ .Release.Name }}-gateway
 spec:
   selector:
     istio: ingressgateway
@@ -9,6 +9,6 @@ spec:
     - hosts:
         - {{ .Values.mqtt.subdomain }}.{{ .Values.kyma.cluster.hostname }}
       port:
-        name: tcp
-        number: {{ .Values.mqtt.port }}
+        name: tcp-broker
+        number: 31400
         protocol: TCP

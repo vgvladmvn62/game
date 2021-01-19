@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-mqtt-broker
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: {{ .Release.Name }}-mqtt-broker
   ports:
-    - name: broker
+    - name: tcp-broker
       port: 1883
       targetPort: 1883
       protocol: TCP
