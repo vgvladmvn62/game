@@ -9,6 +9,6 @@ spec:
     - hosts:
         - {{ .Values.mqtt.subdomain }}.{{ .Values.kyma.cluster.hostname }}
       port:
-        name: tcp
+        name: tcp-broker
         number: {{ .Values.mqtt.port }}
         protocol: TCP

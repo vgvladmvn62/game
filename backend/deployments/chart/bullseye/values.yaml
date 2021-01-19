@@ -21,7 +21,7 @@ frontend:
 mqtt:
   subdomain: "mqtt-broker"
   image: ""
-  port: 31400
+  port: 443
   gateway:
     name: "gateway"
 
